@@ -1,0 +1,114 @@
+#mainpage-top-bar{
+    border-style: solid;
+    border-color: white;
+    border-radius: 10px;
+    border-width: 1px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(115, 115, 115, 0.25) 100%);
+    box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(5px);
+    display: flex;
+    position: fixed;
+    right: 20px;
+    left: 20px;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    min-width: 900;
+    width: auto;
+    height: 30px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.left-links{
+    height: auto;
+    width: auto;
+    position: absolute;
+    left: 20px;
+    margin-right: 50%;
+}
+
+.right-links{
+    height: auto;
+    width: auto;
+    position: absolute;
+    right: 20px;
+    margin-left: 50%;
+}
+
+#mainpage-top-bar span{
+    margin-left: 20px;
+    margin-right: 20px;
+    border: 1px solid;
+    height: max-content;
+    color: rgba(22, 30, 21, 0.60);
+}
+
+#mainpage-top-bar a{
+    font-family: 'Open Sans', sans-serif ;
+    font-weight: 300;
+    color: white;
+    text-decoration: white;
+}
+
+#mainpage-top-bar a:hover{
+    color: rgb(22, 30, 21);
+}
+
+#logindiv{
+    max-width: 320px;
+    min-height: 330px;
+    border: 1px solid #FFF;
+    border-radius: 20px;
+    margin: auto;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(115, 115, 115, 0.25) 100%);
+    box-shadow: 14px 14px 21px 0px rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(5px);
+    position: relative;
+    top: 160px;
+}
+
+#logindiv h4{
+    color: white; 
+    font-family: 'Konkhmer Sleokchher'; 
+    font-size: 26px; 
+    text-align: center; 
+    height: min-content;
+    margin: 15px 0px;
+}
+
+#logindiv input{
+    background-color: rgb(0, 0, 0, 0.60);
+    border-radius: 8px;
+    border-style: none;
+    width: 200px;
+    height: 30px;
+    padding-left: 20px;
+    color: white;
+    font-size: 12px;
+    margin: 5px auto;
+}
+
+#logindiv button{
+    width: 80px;
+    height: 25px;
+    background-color: #161E15;
+    color: white;
+    border: none;
+    border-radius: 8px;
+}
+
+#logindiv button:hover{
+    border: 1px solid #FFF;
+}
+
+
+#logindiv p{
+    font-family: 'Open Sans', sans-serif ; 
+    margin-bottom: 0px;
+    position: relative;
+    bottom: -5px; 
+    font-size: 12px;
+    text-align: center;
+}
