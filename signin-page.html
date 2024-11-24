@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<title>Kayıt Ol</title>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        body {
+            background-color: #1D271C;
+            flex-direction: column;
+            height: auto;
+            max-height: 100vh;
+            margin: 0px;
+            padding: 30px;
+        }
+
+        body *{
+            z-index: 2;
+        }
+
+        div {
+            width: 100%;
+            height: auto;
+            text-align: center;
+        }
+
+        footer {
+            width: 100%;
+            height: auto;
+            padding: 5px;
+        }
+
+        section input,
+        select {
+            width: 200px;
+            height: 25px;
+            border: none;
+            border-radius: 4px;
+            align-items: center;
+            margin: 4px 4px;
+            padding: 0px 5px;
+        }
+
+        section select {
+            width: 210px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <img class="background-image" src="images/Vector.png" height="300px">
+    
+    <!--Menü-->
+    <nav id="signinpage-top-bar">
+        <div class="left-links">
+            <a href="welcome-page.html" style="font-weight: bolder;" title="welcome page">WebDoc</a>
+            <span></span>
+            <a href="#" title="hakkımızda">Hakkımızda</a>
+            <span></span>
+            <a href="#" title="Hizmet verilen kurumlar">Hizmat Verilen Kurumlar</a>
+        </div>
+        <div class="right-links">
+            <a href="#" title="iletişim">İletişim</a>
+            <span></span>
+            <a href="#" title="kişisel verilerin korunumu kanunu">KVKK</a>
+            <span></span>
+            <a href="#" title="sık sorulan sorular">SSS</a>
+        </div>
+    </nav>
+
+    <br>
+    <br>
+    <div style="padding: 30px 0px; margin-top:45px;">
+        <!--Karşılama mesajları ve seçiçi-->
+        <h style="font-size: 30px; color: white; font-family: 'Konkhmer Sleokchher';">Bir Hesap Oluşturun</h>
+        <br>
+        <select id="select_status" class="select-status">
+            <option selected>Personel</option>
+            <option>Hasta</option>
+        </select>
+    </div>
+
+    <div>
+        <!--İnputlar-->
+        <section>
+            <!--Genel bilgiler-->
+            <input type="tex" placeholder="Ad" id="name" title="ad" required>
+            <input type="tex" placeholder="Soyad" id="surname" title="soyad" required>
+            <input type="tel" placeholder="Telefon" id="phone" title="telefon numarası" required>
+            <input type="email" placeholder="E-mail" id="email" title="email adresi">
+            <br>
+            <input type="date" id="dogum_tarihi" title="doğum tarihi" required>
+            <input type="text" placeholder="Doğduğu şehir" id="dogdugu_sehir" title="doğduğu şehir" required>
+            <select id="select_gender" title="cinsiyet" required>
+                <option>Cinsiyet</option>
+                <option>Erkek</option>
+                <Option>Kadın</Option>
+            </select>
+            <input type="number" placeholder="T.C Kimlik no" id="tckn" title="Türkiye cumhuriyeti kimlik numarası"
+                required>
+            <hr>
+            <!--Personel girdileri-->
+            <div style="display: none;">
+
+                <!--Görev Seçimi-->
+                <select id="select_job" title="Mesleğinizi seçin">
+                    <option selected>Görev</option>
+                    <option>Asistan</option>
+                    <option>Doktor</option>
+                    <option>Hemşire</option>
+                </select>
+
+                <!--Uzmanlık-->
+                <select id="select_expertis" title="Uzmanlık alanınızı seçiniz">
+                    <option selected>Uzmanlık</option>
+                    <option>Asistan Dr.</option>
+                    <option>Başasistan</option>
+                    <option>Başhemşire</option>
+                    <option>Doç. Dr</option>
+                    <option>Dr</option>
+                    <option>Hemşire</option>
+                    <option>Hemşire Yard.</option>
+                    <option>Prof. Doc</option>
+                    <option>Uzman Dr</option>
+                    <option>Yard. Doç.</option>
+                </select>
+
+                <!--Branş seçimi-->
+                <select id="select_branch" title="baranşınızı seçin" required>
+                    <option selected>Branş</option>
+                    <option>Hemşirelik alanları</option>
+                    <option>Aile Hekimi</option>
+                    <Option>Dermatoloji</Option>
+                    <Option>Fiziksel Tıp ve Rehabilitasyon</Option>
+                    <Option>Genel Cerrahi</Option>
+                    <Option>Göğüs Hastalıkları</Option>
+                    <Option>Göz Hastalıkları</Option>
+                    <Option>İç Hastalıkları</Option>
+                    <Option>Kadın Hastalıkları</Option>
+                    <Option>Kardiyoloji</Option>
+                    <Option>Kulak Burun Boğaz</Option>
+                    <Option>Nöroloji</Option>
+                    <Option>Pediatri</Option>
+                    <Option>Psikiyatri</Option>
+                    <option>Üroloji</option>
+                </select>
+
+                <br>
+                <!--Hastane adı-->
+                <input type="text" placeholder="Hastane adı" id="hospital_name" title="çalıştığınız hastanenin adı"
+                    required>
+
+                <!--Poliklinik Seçimi-->
+                <select id="select_policlinic" title="çalıştığınız polikliniği seçiniz" required>
+                    <option selected>Poliklinik</option>
+                    <option>Acil Servis</option>
+                    <Option>Dermatoloji Polikliniği</Option>
+                    <Option>Fiziksel Tıp ve Rehabilitasyon Polikliniği</Option>
+                    <Option>Genel Cerrahi Polikliniği</Option>
+                    <Option>Göğüs Hastalıkları Polikliniği</Option>
+                    <Option>Göz Hastalıkları Polikliniği</Option>
+                    <Option>İç Hastalıkları Polikliniği</Option>
+                    <Option>Kadın Hastalıkları Polikliniği</Option>
+                    <Option>Kardiyoloji Polikliniği</Option>
+                    <Option>Kulak Burun Boğaz Polikliniği</Option>
+                    <Option>Nöroloji Polikliniği</Option>
+                    <Option>Pediatri Polikliniği</Option>
+                    <Option>Psikiyatri Polikliniği</Option>
+                    <option>Üroloji Polikliniği</option>
+                </select>
+
+                <!--Personel Kimliği-->
+                <input type="text" placeholder="Personel kimliği" id="employee_id" title="personel kimliğinizi giriniz"
+                    required>
+
+            </div>
+
+            <!--Hasta girdileri-->
+            <div style="display: block;">
+
+                <!--Kan grubu-->
+                <select id="select_blood_type" title="kan grubunuzu seçiniz">
+                    <option selected>Kan grubu</option>
+                    <option>AB Rh+</option>
+                    <option>AB Rh-</option>
+                    <option>A Rh+</option>
+                    <option>A Rh-</option>
+                    <option>B Rh+</option>
+                    <option>B Rh-</option>
+                    <option>0 Rh+</option>
+                    <option>0 Rh-</option>
+                </select>
+
+                <!--Boy-->
+                <input type="number" placeholder="Boy (cm)" id="height" title="boyunuzu cm olarak giriniz" required>
+
+                <!--Kilo-->
+                <input type="number" placeholder="Kilo (Kg)" id="height" title="kilonuzu kg olarak giriniz" required>
+                <br>
+                <!--Yakın Akraba Adı-->
+                <input type="text" placeholder="Yakın akraba adı" id="close_relative_name"
+                    title="bir yakınınızın ismini giriniz. Bu kişi eşiniz, çocuğunuz olabilir" required>
+
+                <!--Yakın Akraba Soyadı-->
+                <input type="text" placeholder="Yakın akraba soyadı" id="close_relative_surname"
+                    title="bir yakınınızın ismini giriniz. Bu kişi eşiniz, çocuğunuz olabilir" required>
+
+                <!--Yakın Akraba Telefon-->
+                <input type="tel" placeholder="Yakın akraba telefon" id="close_relative_phone"
+                    title="bir yakınınızın telefon numarasını giriniz. Bu kişi eşiniz, çocuğunuz olabilir" required>
+                <br>
+                <!--Kronik Hastalık 1-->
+                <input type="text" placeholder="Kronik hastalık 1" id="cronic_disease1"
+                    title="varsa kronik hastalığınızı giriniz">
+
+                <!--Kronik Hastalık 2-->
+                <input type="text" placeholder="Kronik hastalık 2" id="cronic_disease2"
+                    title="varsa kronik hastalığınızı giriniz">
+
+                <!--Kronik Hastalık 3-->
+                <input type="text" placeholder="Kronik hastalık 2" id="cronic_disease3"
+                    title="varsa kronik hastalığınızı giriniz">
+
+            </div>
+
+            <div style="margin-top: 130px;">
+                <!--Giriş butonu ve sözleşmeler-->
+                <p style="font-weight: bold;" class="link">KVKK, Gizlilik sözleşmesi ve Bilgi işlemleri okudum kabul
+                    ediyorum.</p>
+                <br>
+                <input class="kayıt-buton" type="button" value="KAYDOL">
+            </div>
+        </section>
+    </div>
+
+    <br>
+    <footer>
+        <!--Şikayer öneri ve yardım-->
+        <p class="link" style="text-align: left;">Şikayet ve Öneri</p>
+        <div class="helper">?</div>
+    </footer>
+</body>
+
+</html>
