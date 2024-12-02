@@ -3,7 +3,7 @@
 <title>Kayıt Ol</title>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="login-signin-style.css">
     <style>
         body {
             background-color: #1D271C;
@@ -87,7 +87,7 @@
             <!--Genel bilgiler-->
             <input type="tex" placeholder="Ad" id="name" title="ad" required>
             <input type="tex" placeholder="Soyad" id="surname" title="soyad" required>
-            <input type="tel" placeholder="Telefon" id="phone" title="telefon numarası" required>
+            <input type="number" placeholder="Telefon" id="phone" title="telefon numarası" required>
             <input type="email" placeholder="E-mail" id="email" title="email adresi">
             <br>
             <input type="date" id="dogum_tarihi" title="doğum tarihi" required>
@@ -97,7 +97,7 @@
                 <option>Erkek</option>
                 <Option>Kadın</Option>
             </select>
-            <input type="number" placeholder="T.C Kimlik no" id="tckn" title="Türkiye cumhuriyeti kimlik numarası"
+            <input type="number" placeholder="T.C. Kimlik no" id="tckn" title="Türkiye cumhuriyeti kimlik numarası"
                 required>
             <hr>
             <!--Personel girdileri-->
@@ -200,15 +200,15 @@
                 <br>
                 <!--Yakın Akraba Adı-->
                 <input type="text" placeholder="Yakın akraba adı" id="close_relative_name"
-                    title="bir yakınınızın ismini giriniz. Bu kişi eşiniz, çocuğunuz olabilir" required>
+                    title="bir yakınınızın ismini giriniz. Bu kişi eşiniz, çocuğunuz veya refakatçiniz olabilir" required>
 
                 <!--Yakın Akraba Soyadı-->
                 <input type="text" placeholder="Yakın akraba soyadı" id="close_relative_surname"
-                    title="bir yakınınızın ismini giriniz. Bu kişi eşiniz, çocuğunuz olabilir" required>
+                    title="bir yakınınızın ismini giriniz. Bu kişi eşiniz, çocuğunuz veya refakatçiniz olabilir" required>
 
                 <!--Yakın Akraba Telefon-->
-                <input type="tel" placeholder="Yakın akraba telefon" id="close_relative_phone"
-                    title="bir yakınınızın telefon numarasını giriniz. Bu kişi eşiniz, çocuğunuz olabilir" required>
+                <input type="number" placeholder="Yakın akraba telefon" id="close_relative_phone"
+                    title="bir yakınınızın telefon numarasını giriniz. Bu kişi eşiniz, çocuğunuz veya refakatçiniz olabilir" required>
                 <br>
                 <!--Kronik Hastalık 1-->
                 <input type="text" placeholder="Kronik hastalık 1" id="cronic_disease1"

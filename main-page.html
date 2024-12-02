@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Muayeneler</title>
+    <link rel="stylesheet" type="text/css" href="main-page-styles.css">
+    <style>
+        body {
+            padding: 0px;
+            margin: 0px;
+            height: 100px;
+            height: 100vh;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <!--Muayene sonuç menüsü-->
+    <nav class="nav-bar">
+        <a href="#" style="font-weight: bolder;">WebDoc</a>
+        <span></span>
+        <a href="#" title="hasta bilgilerini görüntüle">Hasta bilgileri</a>
+        <span></span>
+        <a href="#" title="muayene ilaçlarını görüntüle">İlaçlar</a>
+        <span></span>
+        <a href="#" title="muayene teşhislerini görüntüle">Teşhisler</a>
+        <span></span>
+        <a href="#" title="gözlük reçetelerini görüntüle">Gözlük reçeteleri</a>
+        <span></span>
+        <a href="#" title="muayene eden personelleri görüntüle">Muayene eden kişiler</a>
+        <span></span>
+        <a href="#" title="yatakhane bilgilerini görüntüle">Yatakhane no</a>
+        <span></span>
+        <a href="#" title="geçmiş muayeneleri görüntüle">Muayene bilgileri</a>
+        <span></span>
+        <a href="#">Muayene kayıt</a>
+    </nav>
+
+    <!--Yan panel-->
+    <div class="side-bar">
+        <h3>Muayeneler</h3>
+        <a href="#" class="column-box">02.12.2024 (Örnek)</a>
+    </div>
+
+    <!--Bilgi kısmı-->
+    <div class="information-title">
+        <h2>Nasıl Kullanırım?</h2>
+        <p>
+            Kişisel bilgileriniz için üst panelden “Hasta Bilgileri” kısmına tıklayınız.
+            Diğer hastalık bilgileriniz için yukarıdaki barı ya da sol tarafta yer alan geçmiş muayenelerinizi tıklamayı
+            deneyin.
+            Eğer personel değilseniz muayene kayıt sayfasına erişemezsiniz.
+        </p>
+    </div>
+
+    <!--Ana içerik-->
+    <div class="content-display">
+        <div id="patient-informations">
+            <!--1. kolon-->
+            <div class="column">
+                <h2>Kişi Ad Soyad</h2>
+                <p class="column-box" id="columnbx_TC">T.C.</p>
+                <p class="column-box" id="columnbx_dogumtarihi">Doğum tarihi</p>
+                <p class="column-box" id="columnbx_sehir">Şehir</p>
+                <p class="column-box" id="columnbx_cinsiyet">Cinsiyet</p>
+            </div>
+
+            <!--2. kolon-->
+            <div class="column">
+                <h2>İletişim</h2>
+                <p class="column-box" id="columnbx_telefon">Telefon</p>
+                <p class="column-box" id="columnbx_email">E-mail</p>
+            </div>
+
+            <!--3. kolon-->
+            <div class="column">
+                <h2>Kişisel Bilgiler</h2>
+                <p class="column-box" id="columnbx_kangrubu">Kan grubu</p>
+                <p class="column-box" id="columnbx_boy">Boy</p>
+                <p class="column-box" id="columnbx_kilo">Kilo</p>
+                <p class="column-box" id="columnbx_kronikHastalık1">Kronik hastalık 1</p>
+                <p class="column-box" id="columnbx_kronikHastalık2">Kronik hastalık 2</p>
+                <p class="column-box" id="columnbx_kronikHastalık3">Kronik hastalık 3</p>
+            </div>
+
+            <!--4. kolon-->
+            <div class="column">
+                <h2>Yakın Akraba</h2>
+                <p class="column-box" id="columnbx_yakınAkrabaAd">Yakın akraba ad</p>
+                <p class="column-box" id="columnbx_yakınAkrabaSoyad">Yakın akraba soyad</p>
+                <p class="column-box" id="columnbx_yakınAkrabaTelefon">Yakın akraba telefon</p>
+            </div>
+        </div>
+    </div>
+
+    <!--İletişim - Şikayet ve geri bildirim-->
+    <footer>
+        <p>İletişim</p>
+        <p>Şikayet ve Öneri</p>
+    </footer>
+</body>
+
+</html>

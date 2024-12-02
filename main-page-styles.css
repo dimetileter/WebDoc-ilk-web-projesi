@@ -1,0 +1,158 @@
+.nav-bar{
+    border-radius: 15px;
+    background-color: #DA5353;
+    position: fixed;
+    display: flex;
+    top: 20px;
+    left: 270px;
+    right: 20px;
+    height: 30px;
+    min-width: 950px;
+    z-index: 10;
+    color: white;
+    align-items: center;
+    font-size: 12px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+nav span{
+    border: none;
+    background-color: black;
+    width: 2px;
+    height: 20px;
+    margin: 0px 20px;
+}
+
+nav a{
+    color: white;
+    text-decoration: none;
+}
+
+nav a:hover{
+    text-decoration: underline;
+}
+
+
+.side-bar{
+    border-radius: 0px 20px 20px 0px;
+    background-color: #DA5353;
+    color: white;
+    height: 100%;
+    flex-direction: column;
+    width: 250px;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+}
+
+.side-bar h3{
+    position: relative;
+    top: 30px;
+    width: 100;
+    height: auto;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.information-title{
+    color: black;
+    padding: 14px 0px;
+    background-color: #D9D9D9;
+    border-radius: 15px;
+    /*min-width: 950px;*/
+    position: fixed;
+    top: 70px;
+    left: 270px;
+    right: 20px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    justify-content: center;
+}
+
+.information-title h2{
+    font-family: Helvetica;
+    margin: 0px;
+    width: 30%;
+    height: 100%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.information-title p{
+    font-size: 13px;
+    text-align: start;
+    margin-left: 10px;
+    width: 100%;
+}
+
+.content-display{
+    background-color: #D9D9D9;
+    border-radius: 15px;
+    position: fixed;
+    top: 180px;
+    left: 270px;
+    right: 20px;
+    display: flex;
+    height: 400px;
+}
+
+#patient-informations{
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+}
+
+.column{
+    flex: 1;                     
+    max-width: 25%;           
+    padding: 10px;
+    text-align: center;
+    border-radius: 15px;
+    flex-direction: column;
+}
+
+.column h2{
+    font-family: Helvetica;
+    font-size: medium;
+}
+
+.column-box{
+    width: 140px;
+    height: 25px;
+    background-color: white;
+    border: none;
+    border-radius: 20px;
+    margin: 25px auto;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: small;
+    text-decoration: none;
+}
+
+footer{
+    position: fixed;
+    bottom: 0px;
+    left: 270px;
+    right: 20px;
+    color: black;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: small;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
