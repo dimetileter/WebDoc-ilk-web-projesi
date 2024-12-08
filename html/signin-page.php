@@ -93,7 +93,7 @@
             <input type="tex" placeholder="Ad" name="userName" title="ad" required>
             <input type="tex" placeholder="Soyad"  name="userSurname" title="soyad" required>
             <input type="number" placeholder="Telefon" name="phone" title=" numarası" required>
-            <input type="email" placeholder="E-mail" title="email adresi" required>
+            <input type="email" placeholder="E-mail" name="email" title="email adresi" required>
             <br>
             <input type="date" id="birth_date" name="birth_date" title="doğum tarihi" required>
             <input type="text" placeholder="Doğduğu şehir" name="birth_city" title="doğduğu şehir" required>
