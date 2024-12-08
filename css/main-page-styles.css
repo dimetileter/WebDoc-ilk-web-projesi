@@ -37,7 +37,7 @@ nav a:hover{
 .side-bar{
     border-radius: 0px 20px 20px 0px;
     background-color: #DA5353;
-    color: white;
+    color: black;
     height: 100%;
     flex-direction: column;
     width: 250px;
@@ -57,6 +57,7 @@ nav a:hover{
     height: auto;
     text-align: center;
     margin-bottom: 60px;
+    color: white;
 }
 
 .information-title{
@@ -105,17 +106,20 @@ nav a:hover{
     height: 400px;
 }
 
-#patient-informations{
+#patient-informations, #patient-register{
     display: flex;
     justify-content: space-between;
+    flex-direction: row;
+    border-radius: 15px;
     height: 100%;
     width: 100%;
-    border-radius: 15px;
 }
+
 
 .column{
     flex: 1;                     
-    max-width: 25%;           
+    width: 25%; 
+    height: 100%;          
     padding: 10px;
     text-align: center;
     border-radius: 15px;
@@ -133,13 +137,36 @@ nav a:hover{
     background-color: white;
     border: none;
     border-radius: 20px;
-    margin: 25px auto;
+    margin: 20px auto;
     text-align: center;
     justify-content: center;
     align-items: center;
     display: flex;
     font-size: small;
     text-decoration: none;
+}
+
+.row{
+    display: flex;  
+    flex: 1;
+    padding: 0px;
+    height: 25px;
+    margin: 20px auto;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: small;
+}
+
+.glass-column-box{
+    width: 60px;
+    height: 25px;
+    background-color: white;
+    margin: 20px auto;
+    border: none;
+    border-radius: 20px;
+    text-decoration: none;
+    text-align: center;
 }
 
 footer{

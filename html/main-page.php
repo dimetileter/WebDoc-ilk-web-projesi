@@ -1,9 +1,13 @@
+<?php header('Content-Type: text/html; charset=utf-8');
+session_start(); 
+?>
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 
 <head>
     <title>Muayeneler</title>
-    <link rel="stylesheet" type="text/css" href="main-page-styles.css">
+    <link rel="stylesheet" type="text/css" href="../css/main-page-styles.css">
+    <meta charset="UTF-8">
     <style>
         body {
             padding: 0px;
@@ -39,8 +43,18 @@
 
     <!--Yan panel-->
     <div class="side-bar">
-        <h3>Muayeneler</h3>
-        <a href="#" class="column-box">02.12.2024 (Örnek)</a>
+        <?php 
+            // Eğer kullanıcı personelse personel sasyfası verilerini getir değilse hasta bilgilerini getir
+            if(isset($_GET['is_employee']) && $_GET['is_employee'] == 1) {
+                include("../main-page-links/personel-sidebar.php");
+            }
+            else if(isset($_GET["is_employee"]) && $_GET["is_employee"] == 0) {
+                include("../main-page-links/hasta-sidebar.php");
+            }
+            else{
+                echo "<h2 style='text-align: center; margin: auto;'>Sayfa yüklenirken hata oluştu!</h2>";
+            }
+        ?>
     </div>
 
     <!--Bilgi kısmı-->
@@ -56,42 +70,19 @@
 
     <!--Ana içerik-->
     <div class="content-display">
-        <div id="patient-informations">
-            <!--1. kolon-->
-            <div class="column">
-                <h2>Kişi Ad Soyad</h2>
-                <p class="column-box" id="columnbx_TC">T.C.</p>
-                <p class="column-box" id="columnbx_dogumtarihi">Doğum tarihi</p>
-                <p class="column-box" id="columnbx_sehir">Şehir</p>
-                <p class="column-box" id="columnbx_cinsiyet">Cinsiyet</p>
-            </div>
 
-            <!--2. kolon-->
-            <div class="column">
-                <h2>İletişim</h2>
-                <p class="column-box" id="columnbx_telefon">Telefon</p>
-                <p class="column-box" id="columnbx_email">E-mail</p>
-            </div>
-
-            <!--3. kolon-->
-            <div class="column">
-                <h2>Kişisel Bilgiler</h2>
-                <p class="column-box" id="columnbx_kangrubu">Kan grubu</p>
-                <p class="column-box" id="columnbx_boy">Boy</p>
-                <p class="column-box" id="columnbx_kilo">Kilo</p>
-                <p class="column-box" id="columnbx_kronikHastalık1">Kronik hastalık 1</p>
-                <p class="column-box" id="columnbx_kronikHastalık2">Kronik hastalık 2</p>
-                <p class="column-box" id="columnbx_kronikHastalık3">Kronik hastalık 3</p>
-            </div>
-
-            <!--4. kolon-->
-            <div class="column">
-                <h2>Yakın Akraba</h2>
-                <p class="column-box" id="columnbx_yakınAkrabaAd">Yakın akraba ad</p>
-                <p class="column-box" id="columnbx_yakınAkrabaSoyad">Yakın akraba soyad</p>
-                <p class="column-box" id="columnbx_yakınAkrabaTelefon">Yakın akraba telefon</p>
-            </div>
-        </div>
+        <?php 
+            // Eğer kullanıcı personelse personel sasyfası verilerini getir değilse hasta bilgilerini getir
+            if(isset($_GET['is_employee']) && $_GET['is_employee'] == 1) {
+                include("../main-page-links/personel-bilgileri.php");
+            }
+            else if(isset($_GET["is_employee"]) && $_GET["is_employee"] == 0) {
+                include("../main-page-links/hasta-bilgileri.php");
+            }
+            else{
+                echo "<h2 style='text-align: center; margin: auto;'>Sayfa yüklenirken hata oluştu!</h2>";
+            }
+        ?>
     </div>
 
     <!--İletişim - Şikayet ve geri bildirim-->

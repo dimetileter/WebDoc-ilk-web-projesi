@@ -93,7 +93,6 @@
     color: #8d8d8d;
 }
 
-
 #logindiv{
     max-width: 320px;
     min-height: 330px;
@@ -173,14 +172,17 @@ p{
     align-items: center;
 }
 
-.kayıt-buton{
+.kayit-buton{
     width: 80px;
     height: 25px;
     background-color: black;
-    border: 2px solid #FFF;
     border-radius: 5px;
     font-weight: normal;
     color: white;
+}
+
+.kayit-buton:hover{
+    border: 2px solid #FFF;
 }
 
 .link{
