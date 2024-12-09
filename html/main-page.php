@@ -55,6 +55,9 @@ session_start();
                 echo "<h2 style='text-align: center; margin: auto;'>Sayfa yüklenirken hata oluştu!</h2>";
             }
         ?>
+        
+        
+        <a href="../database/exit.php" class="exit">Çıkış</a>
     </div>
 
     <!--Bilgi kısmı-->

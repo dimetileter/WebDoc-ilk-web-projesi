@@ -2,6 +2,9 @@
     session_start();
     require_once("database-connection.php");
 
+    // Diğer action'da kullanılmak üzere sakla
+    $_SESSION['columnbx_TC'] = $_POST['columnbx_TC'];
+
     if (isset($_POST['researchPatient'])) {
         try {
             // Kullanıcı sorgusu
@@ -22,22 +25,25 @@
                 // Hasta bilgileri sorgusu
                 $sqlQuery_2 = $dbConnection->prepare(
                     "SELECT * FROM hastabilgileri 
-                    WHERE kullanici_id = :userID"
+                    WHERE tckn = :tckn"
                 );
+                
                 $sqlQuery_2->execute([
-                    'userID' => $user['kullanici_id']
+                    'tckn' => $_POST['columnbx_TC']
                 ]);
 
-                $cronicDiseases = $sqlQuery_2->fetch(PDO::FETCH_ASSOC);
+                $diseases = $sqlQuery_2->fetch(PDO::FETCH_ASSOC);
 
                 // Oturum verilerini ayarla
                 $_SESSION['cbUserName'] = $user['isim'];
                 $_SESSION['cbUserSurname'] = $user['soyisim'];
-                $_SESSION['cbChronic_disease1'] = $cronicDiseases['kronik_hastalik1'] ?? "Kronik hastalık yok";
-                $_SESSION['cbChronic_disease2'] = $cronicDiseases['kronik_hastalik2'] ?? "Kronik hastalık yok";
-                $_SESSION['cbChronic_disease3'] = $cronicDiseases['kronik_hastalik3'] ?? "Kronik hastalık yok";
+                $_SESSION['cbBlood_type'] = $diseases['kan_grubu'];
+                $_SESSION['cbChronic_disease1'] = $diseases['kronik_hastalik1'];
+                $_SESSION['cbChronic_disease2'] = $diseases['kronik_hastalik2'];
+                $_SESSION['cbChronic_disease3'] = $diseases['kronik_hastalik3'];
             
                 header("Location:../html/main-page.php?is_employee=1");
+                exit;
             } 
             else {
                 // Kullanıcı bulunamadıysa yapılacaklar

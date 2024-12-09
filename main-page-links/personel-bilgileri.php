@@ -1,36 +1,34 @@
-<!--Personel içeriği-->
-<!--1. kolon-->
-<form class="column" action="../database/research-patient.php" method="post" style="margin-left:25px">
-    <h2>Hasta biligleri</h2>
-    <input class="column-box" name="columnbx_TC" placeholder="T.C. Giriniz" required></input>
-    <p class="column-box" name="columnbx_name"><?php echo $_SESSION['cbUserName']?></p>
-    <p class="column-box"><?php echo $_SESSION['cbUserSurname']?></p>
-    <p class="column-box"><?php echo $_SESSION['cbChronic_disease1']?></p>
-    <p class="column-box"><?php echo $_SESSION['cbChronic_disease2']?></p>
-    <p class="column-box"><?php echo $_SESSION['cbChronic_disease3']?></p>
-    <input type="submit" value="Hastayı sorgula" name="researchPatient" 
-        style="border-radius: 8px; background-color: white; border-radius: 8px; width: 140px;
-        height: 25px;">
-</form>
-
 <form action="../database/save-patient.php" method="post" id="patient-register" style="margin-left:20px;">    
+    
+    <!--Personel içeriği-->
+    <div class="column">
+        <h2>Personel Bilgileri</h2>
+        <p class="column-box"><?php echo $_SESSION['userName'] ?></p>
+        <p class="column-box"><?php echo $_SESSION['userSurname'] ?></p>
+        <p class="column-box"><?php echo $_SESSION['job'] ?></p>
+        <p class="column-box"><?php echo $_SESSION['expertis'] ?></p>
+        <p class="column-box"><?php echo $_SESSION['branch'] ?></p>
+        <p class="column-box"><?php echo $_SESSION['policlinik'] ?></p>
+        <p class="column-box"><?php echo $_SESSION['employeeID'] ?></p>
+    </div>
+
     <!--2. kolon-->
     <div class="column">
         <h2>Hasta kayıt</h2>
-        <input type="text" class="column-box" name="txtDiagnosis" placeholder="Tanı">
-        <input type="text" class="column-box" name="txtDiagnosisDesc" placeholder="Tanı açıklaması">
-        <input type="text" class="column-box" name="txtMedicine" placeholder="İlaç adı">
-        <input type="text" class="column-box" name="txtMedicineDesc" placeholder="İlaç açıklaması">
-        <input type="text" class="column-box" name="txtMedicineDesc" placeholder="Tedavi ettiği hastalık">
+        <input type="text" class="column-box" name="txtDiagnosis" placeholder="Tanı" required>
+        <input type="text" class="column-box" name="txtDiagnosisDesc" placeholder="Tanı açıklaması" required>
+        <input type="text" class="column-box" name="txtMedicine" placeholder="İlaç adı" required>
+        <input type="text" class="column-box" name="txtMedicineDesc" placeholder="İlaç açıklaması" required >
+        <input type="text" class="column-box" name="txtMedicineIllnes" placeholder="Tedavi ettiği hastalık" required>
     </div>
 
     <!--3. kolon-->
     <div class="column">
         <h2>Yatış Kayıt</h2>
-        <select class="column-box" id="columnbx_yatıs_durumu">
-            <option disable selected>Yatış</option>
-            <option value="yatis_var" name="yatis_var">Yatış var</option>
-            <option value="yatis_yok" name="yatis_yok">Yatış yok</option>
+        <select class="column-box" name="columnbx_yatis_durumu">
+            <option disabled selected>Yatış</option>
+            <option value="var">Yatış var</option>
+            <option value="yok">Yatış yok</option>
         </select>
 
         <input type="text" class="column-box" name="txtBlock" placeholder="Blok">
@@ -41,25 +39,43 @@
     <!--4. kolon-->
     <div class="column">
         <h2>Gözlük kayıt</h2>
-        <div class="row">
-            <input class="glass-column-box" name="txtLeftS" placeholder="Sol &lt;S>">
-            <input class="glass-column-box" name="txtRightS" placeholder="Sağ &lt;S>">
-        </div>
-        <div class="row">
-            <input class="glass-column-box" name="txtLeftC" placeholder="Sol &lt;C>">
-            <input class="glass-column-box" name="txtRightC" placeholder="Sağ &lt;C>">
-        </div>
-        <div class="row">
-            <input class="glass-column-box" name="txtLeftA" placeholder="Sol &lt;A>">
-            <input class="glass-column-box" name="txtRightA" placeholder="Sağ &lt;A>">
-        </div>
+        <select class="column-box" style="margin-bottom: 0px;" name="columnbx_gozluk_durumu" >
+            <option disabled selected>Gözlük</option>
+            <option value="var">Gözlük var</option>
+            <option value="yok">Gözlük yok</option>
+        </select>
+        <table style="margin: 0px auto;">
+            <tr>
+                <td>
+                    <input class="glass-column-box" name="txtLeftS" placeholder="Sol &lt;S>">   
+                </td>
+                <td>
+                    <input class="glass-column-box" name="txtRightS" placeholder="Sağ &lt;S>">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="glass-column-box" name="txtLeftC" placeholder="Sol &lt;C>">
+                </td>
+                <td>
+                    <input class="glass-column-box" name="txtRightC" placeholder="Sağ &lt;C>">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="glass-column-box" name="txtLeftA" placeholder="Sol &lt;A>">
+                </td>
+                <td>
+                <input class="glass-column-box" name="txtRightA" placeholder="Sağ &lt;A>">
+                </td>
+            </tr>
+        </table>
     </div>
 
     <!--Kaydet butonu-->
     <div style="height:100%; padding: 5px; flex-direction:column;">
         <input type="submit" value="Hastayı Kaydet" name="btnSavePatient"
-            style="border-radius: 8px; background-color: white; 
-            border-radius: 8px; height: 25px; position:absolute; bottom:40px; right: 25px;
-            border: solid 2px green;">
+            style="background-color: white; border-radius: 5px; height: 20px; position:absolute; bottom:40px; right: 25px;
+            border: solid 1px black; color:green;">
     </div>
 </form>

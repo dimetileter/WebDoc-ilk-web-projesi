@@ -25,8 +25,7 @@ if (isset($_POST["btnLogin"])) {
         // Eğer aranan kullanıcı varsa ilgili işlemleri yap
         if ($kullanici) {
             // Session işlemleri
-            $kullanici_id = $kullanici['kullanici_id'];
-            $is_employee = $kullanici['personel_mi'];
+            $kullanici_tckn = $kullanici['tckn'];
             $_SESSION['userName'] = $kullanici['isim'];
             $_SESSION['userSurname'] = $kullanici['soyisim'];
             $_SESSION['userPhone'] = $kullanici['telefon'];
@@ -34,8 +33,6 @@ if (isset($_POST["btnLogin"])) {
             $_SESSION['birth_date'] = $kullanici['dogum_tarihi'];
             $_SESSION['birth_city'] = $kullanici['dogum_sehri'];
             $_SESSION['gender'] = $kullanici['cinsiyet'];
-            $_SESSION['tckn'] = $kullanici['tckn'];
-
             // Çerez işlemlerini kontrol et 
             /* Çerez işlemlerini en son ekle
             if(isset($_POST[''])) {
@@ -46,21 +43,21 @@ if (isset($_POST["btnLogin"])) {
             }
             */
 
-            if ($is_employee == 1) {
-                
-                //hasta bilgilerini getir
-                get_hastabilgileri($dbConnection, $kullanici_id);
+            // Eğer personelse personel bilgilerini al değilse hasta bilgilerini al
+            if (isset($kullanici['personel_mi']) && $kullanici['personel_mi'] == 1) {
                 
                 // Personel bilgilerini getir
-                get_personelbilgileri($dbConnection, $kullanici_id);
+                get_personelbilgileri($dbConnection, $kullanici_tckn);
                 
                 // Perosnel sayfasına yönlendir
+                $_SESSION['personel_tckn'] = $kullanici_tckn;
                 header("Location:../html/main-page.php?is_employee=1");
+                exit;
             } 
             else {
                 // Kullanıcı verilerini al ve anasayfaya yönlendir
-                get_hastabilgileri($dbConnection, $kullanici_id);
-                get_yakinakraba($dbConnection, $kullanici_id);
+                get_hastabilgileri($dbConnection, $kullanici_tckn);
+                get_yakinakraba($dbConnection, $kullanici_tckn);
 
                 echo "<script>alert('Kullanıcı verileri çekildi, ana sayfaya yönlendirilecek')</script>";
                 header("Location:../html/main-page.php?is_employee=0");
@@ -81,12 +78,16 @@ if (isset($_POST["btnLogin"])) {
     echo "ERROR";
 }
 
-function get_hastabilgileri($db, $id)
+function get_hastabilgileri($db, $tckn)
 {
     // Sql tablosundan verileri çek
     $sqlQuery_hastabilgileri = $db->prepare(
-        "SELECT * FROM hastabilgileri WHERE kullanici_id = $id"
+        "SELECT * FROM hastabilgileri WHERE kullanici_id = :tckn"
     );
+
+    $sqlQuery_hastabilgileri ->execute([
+        "tckn"=> $tckn
+    ]);
 
     // Verileri değişkene aktar
     $hastabilgileri = $sqlQuery_hastabilgileri->fetch(PDO::FETCH_ASSOC);
@@ -108,12 +109,16 @@ function get_hastabilgileri($db, $id)
     }
 }
 
-function get_yakinakraba($db, $id)
+function get_yakinakraba($db, $tckn)
 {
     // Sorgu
     $sqlQuery_yakinakraba = $db->prepare(
-        "SELECT * FROM yakinakraba WHERE kullanici_id = $id"
+        "SELECT * FROM yakinakraba WHERE kullanici_id = :tckn"
     );
+
+    $sqlQuery_yakinakraba ->execute([
+        "tckn"=> $tckn
+    ]);
 
     // Verileri değişkene aktar
     $yakinakraba = $sqlQuery_yakinakraba->fetch(PDO::FETCH_ASSOC);
@@ -130,11 +135,15 @@ function get_yakinakraba($db, $id)
 
 }
 
-function get_personelbilgileri($db, $id){
+function get_personelbilgileri($db, $tckn){
     // Sorgu
     $sqlQuery_personelbilgileri = $db->prepare(
-        "SELECT * FROM personelbilgileri WHERE kullanici_id = $id"
+        "SELECT * FROM personelbilgileri WHERE tckn = :tckn"
     );
+
+    $sqlQuery_personelbilgileri ->execute([
+        "tckn"=> $tckn
+    ]);
 
     // Sorgu snucunu getir
     $personelbilgileri = $sqlQuery_personelbilgileri->fetch(PDO::FETCH_ASSOC);
@@ -144,7 +153,7 @@ function get_personelbilgileri($db, $id){
       $_SESSION['branch'] = $personelbilgileri['brans'];
       $_SESSION['hospitalName'] = $personelbilgileri['hastane_adi'];
       $_SESSION['policlinik'] = $personelbilgileri['poliklinik'];
-      $_SESSION['employeeID'] = $personelbilgileri['personel_id'];
+      $_SESSION['employeeID'] = $personelbilgileri['personel_kimligi'];
     }
     else {
         $_SESSION['job'] = "Meslek";
