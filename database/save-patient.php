@@ -2,9 +2,7 @@
 session_start();
 require_once("../database/database-connection.php");
 
-
-if (isset($_POST["btnSavePatient"])) {
-
+if (isset($_POST["btnSavePatient"]) && isset($_SESSION['columnbx_TC'])) {
     try{
         if($dbConnection) {
             
@@ -30,40 +28,38 @@ if (isset($_POST["btnSavePatient"])) {
             ]);
 
             // Yatış kayıtlarını yap
-            if(isset($_POST['columnbx_yatis_durumu']) && $_POST['columnbx_yatis_durumu'] == 'var') {
+            if($_POST['columnbx_yatis_durumu'] == "var") {
                 $query_yatiskayit = $dbConnection->prepare(
-                    "SELECT * FROM yatiskayit
-                    'tckn' = :tckn,
-                    'personel_tckn' = :personel_tckn,
-                    'yatis' = :yatis_durumu,
-                    'blok' = :_block,
-                    'kat' = :floor,
-                    'oda' = :room
+                    "INSERT INTO yatiskayit SET
+                    tckn = :tckn,
+                    personel_tckn = :personel_tckn,
+                    blok = :_block,
+                    kat = :floor,
+                    oda = :room
                 ");
 
                 $query_yatiskayit ->execute([
                     'tckn' => $_SESSION['columnbx_TC'],
                     'personel_tckn'=> $_SESSION['personel_tckn'],
-                    'yatis_durumu' => ($_POST['columnbx_yatis_durumu'] == 'var') ? 1 : 0,
                     '_block' => $_POST['txtBlock'],
                     'floor' => $_POST['txtFloor'],
                     'room' => $_POST['txtRoom']
-                ]);                
+                ]);    
+                
             }
 
             // Gözlük kayıtlarını yap
-            if(isset($_POST['columnbx_gozluk_durumu']) && $_POST['columnbx_yatıs_durumu'] == 'var') {
+            if($_POST['columnbx_gozluk_durumu'] == "var") {
                 $query_gozlukkayit = $dbConnection->prepare(
-                    "SELECT * FROM gozlukkayit
-                    'tckn' = :tckn,
-                    'personel_tckn' = :personel_tckn,
-                    'sol_s' = :txtLeftS,
-                    'sag_s' = :txtRightS,
-                    'sol_c' = :txtLeftC,
-                    'sag_c' = :txtRightC,
-                    'sol_a' = :txtLeftA,
-                    'sag_a' = :txtRigthA 
-
+                    "INSERT INTO gozlukkayit SET
+                    tckn = :tckn,
+                    personel_tckn = :personel_tckn,
+                    sol_s = :txtLeftS,
+                    sag_s = :txtRightS,
+                    sol_c = :txtLeftC,
+                    sag_c = :txtRightC,
+                    sol_a = :txtLeftA,
+                    sag_a = :txtRightA 
                 ");
 
                 $query_gozlukkayit ->execute([
@@ -74,11 +70,12 @@ if (isset($_POST["btnSavePatient"])) {
                     'txtLeftC' => $_POST['txtLeftC'],
                     'txtRightC' => $_POST['txtRightC'],
                     'txtLeftA'=> $_POST['txtLeftA'],
-                    'txtRigthA'=> $_POST['txtRightA']
+                    'txtRightA'=> $_POST['txtRightA']
                 ]);
 
             }
 
+            echo "<script>alert('Hasta bilgileri kaydedildi');</script>";
             header("Location:../html/main-page.php?is_employee=1");
             exit;
 
@@ -87,6 +84,10 @@ if (isset($_POST["btnSavePatient"])) {
     catch(Exception $e) {
 
     }
+}
+else {
+    header("Location:../html/main-page.php?nulltckn=1");
+    exit;
 }
 
 ?>

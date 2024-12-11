@@ -21,9 +21,9 @@
             <!--3. kolon-->
             <div class="column">
                 <h2>Kişisel Bilgiler</h2>
-                <p class="column-box" id="columnbx_blood_type"><?php echo $_SESSION['kan_grubu']?></p>
-                <p class="column-box" id="columnbx_weight"><?php echo $_SESSION['boy']?></p>
-                <p class="column-box" id="columnbx_height"><?php echo $_SESSION['email']?></p>
+                <p class="column-box" id="columnbx_blood_type"><?php echo $_SESSION['blood_type']?></p>
+                <p class="column-box" id="columnbx_weight"><?php echo $_SESSION['_weight']?></p>
+                <p class="column-box" id="columnbx_height"><?php echo $_SESSION['_height']?></p>
                 <p class="column-box" id="columnbx_chronic_disease1"><?php echo $_SESSION['chronic_disease1']?></p>
                 <p class="column-box" id="columnbx_chronic_disease2"><?php echo $_SESSION['chronic_disease2']?></p>
                 <p class="column-box" id="columnbx_chronic_disease3"><?php echo $_SESSION['chronic_disease3']?></p>

@@ -33,7 +33,6 @@ nav a:hover{
     text-decoration: underline;
 }
 
-
 .side-bar{
     border-radius: 0px 20px 20px 0px;
     background-color: #DA5353;
@@ -53,7 +52,7 @@ nav a:hover{
 .side-bar h3{
     position: relative;
     top: 30px;
-    width: 200px;
+    width: 100%;
     height: auto;
     text-align: center;
     align-items: center;
@@ -154,8 +153,12 @@ nav a:hover{
 }
 
 .column-box{
-    width: 140px;
+    width: 138px;
+    max-width: 140px;
     height: 25px;
+    min-height: 25px;
+    max-height: 105px;
+    padding: 1px 2px;
     background-color: white;
     border: none;
     border-radius: 20px;
@@ -203,6 +206,35 @@ nav a:hover{
 .column-button :active {
     background-color: #D9D9D9;
 }
+
+.information-table {
+    border-collapse: collapse;
+    width: 900px;
+    margin: 20px auto; 
+    background-color: white;
+    height: fit-content;
+}
+
+.information-table th,
+.information-table td {
+    border: 1px solid black;
+    font-family: Helvetica, Arial, sans-serif;
+    text-align: center; 
+}
+
+.information-table td{
+    height: 25px;
+    font-size: 12px;
+    padding: 3px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.information-table th {
+    word-wrap: break-word;
+    padding: 5px;
+}
+
 
 footer{
     position: fixed;

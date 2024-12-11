@@ -19,14 +19,14 @@
         <input type="text" class="column-box" name="txtDiagnosisDesc" placeholder="Tanı açıklaması" required>
         <input type="text" class="column-box" name="txtMedicine" placeholder="İlaç adı" required>
         <input type="text" class="column-box" name="txtMedicineDesc" placeholder="İlaç açıklaması" required >
-        <input type="text" class="column-box" name="txtMedicineIllnes" placeholder="Tedavi ettiği hastalık" required>
+        <textarea class="column-box" name="txtMedicineIllnes" placeholder="Tedavi yöntemi" required></textarea>
     </div>
 
     <!--3. kolon-->
     <div class="column">
         <h2>Yatış Kayıt</h2>
         <select class="column-box" name="columnbx_yatis_durumu">
-            <option disabled selected>Yatış</option>
+            <option disabled selected value="">Yatış</option>
             <option value="var">Yatış var</option>
             <option value="yok">Yatış yok</option>
         </select>
@@ -40,7 +40,7 @@
     <div class="column">
         <h2>Gözlük kayıt</h2>
         <select class="column-box" style="margin-bottom: 0px;" name="columnbx_gozluk_durumu" >
-            <option disabled selected>Gözlük</option>
+            <option disabled selected value="">Gözlük</option>
             <option value="var">Gözlük var</option>
             <option value="yok">Gözlük yok</option>
         </select>

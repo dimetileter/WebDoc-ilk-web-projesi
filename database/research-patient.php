@@ -47,7 +47,14 @@
             } 
             else {
                 // Kullanıcı bulunamadıysa yapılacaklar
-                $_SESSION['error'] = "Kullanıcı bulunamadı.";
+                $_SESSION['cbUserName'] = "Kullanıcı bulunamadı.";
+                $_SESSION['cbUserSurname'] = "-";
+                $_SESSION['cbBlood_type'] = "-";
+                $_SESSION['cbChronic_disease1'] = "-";
+                $_SESSION['cbChronic_disease2'] = "-";
+                $_SESSION['cbChronic_disease3'] = "-";
+                header("Location:../html/main-page.php?is_employee=1");
+                exit;
             }
         } 
         catch (Exception $e) {

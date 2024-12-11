@@ -26,6 +26,7 @@ if (isset($_POST["btnLogin"])) {
         if ($kullanici) {
             // Session işlemleri
             $kullanici_tckn = $kullanici['tckn'];
+            $_SESSION['tckn'] = $kullanici_tckn;
             $_SESSION['userName'] = $kullanici['isim'];
             $_SESSION['userSurname'] = $kullanici['soyisim'];
             $_SESSION['userPhone'] = $kullanici['telefon'];
@@ -33,6 +34,7 @@ if (isset($_POST["btnLogin"])) {
             $_SESSION['birth_date'] = $kullanici['dogum_tarihi'];
             $_SESSION['birth_city'] = $kullanici['dogum_sehri'];
             $_SESSION['gender'] = $kullanici['cinsiyet'];
+            $_SESSION['personel_mi'] = $kullanici['personel_mi'];
             // Çerez işlemlerini kontrol et 
             /* Çerez işlemlerini en son ekle
             if(isset($_POST[''])) {
@@ -58,8 +60,8 @@ if (isset($_POST["btnLogin"])) {
                 // Kullanıcı verilerini al ve anasayfaya yönlendir
                 get_hastabilgileri($dbConnection, $kullanici_tckn);
                 get_yakinakraba($dbConnection, $kullanici_tckn);
+                get_muayeneTarihi($dbConnection, $kullanici_tckn);
 
-                echo "<script>alert('Kullanıcı verileri çekildi, ana sayfaya yönlendirilecek')</script>";
                 header("Location:../html/main-page.php?is_employee=0");
                 exit;
             }
@@ -82,7 +84,7 @@ function get_hastabilgileri($db, $tckn)
 {
     // Sql tablosundan verileri çek
     $sqlQuery_hastabilgileri = $db->prepare(
-        "SELECT * FROM hastabilgileri WHERE kullanici_id = :tckn"
+        "SELECT * FROM hastabilgileri WHERE tckn = :tckn"
     );
 
     $sqlQuery_hastabilgileri ->execute([
@@ -113,7 +115,7 @@ function get_yakinakraba($db, $tckn)
 {
     // Sorgu
     $sqlQuery_yakinakraba = $db->prepare(
-        "SELECT * FROM yakinakraba WHERE kullanici_id = :tckn"
+        "SELECT * FROM yakinakraba WHERE tckn = :tckn"
     );
 
     $sqlQuery_yakinakraba ->execute([
@@ -165,4 +167,29 @@ function get_personelbilgileri($db, $tckn){
     }
 }
 
+function get_muayeneTarihi($db, $tckn) {
+    $sqlQuery_muayeneler = $db -> prepare(
+        "SELECT muayene_tarihi FROM hastakayit WHERE tckn = :tckn"
+    );
+
+    $sqlQuery_muayeneler -> execute([
+        "tckn"=> $tckn
+    ]);
+
+    // Sorgu sonucunun tümünü getir
+    $muayeneTarihleri = $sqlQuery_muayeneler->fetchAll(PDO::FETCH_ASSOC);
+    if ($muayeneTarihleri) {
+        // Linkleri oluştur
+        $links = [];
+        foreach ($muayeneTarihleri as $row) {
+            $muayeneTarihi = $row['muayene_tarihi'];
+            $links[] = "<a href='muayene-bilgileri.php' class='column-box'>" . htmlspecialchars($muayeneTarihi) . "</a>";
+        }
+        // Linkleri oturum değişkenine kaydet
+        $_SESSION['muayene_links'] = $links;
+    } else {
+        $_SESSION['error'] = "Muayene bilgisi bulunamadı.";
+    }
+
+}
 ?>
